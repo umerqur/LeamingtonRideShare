@@ -13,8 +13,15 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-xl font-bold tracking-tight hover:text-primary-400 transition-colors">
-              Leamington RideShare
+            <a href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+              <img
+                src="https://www.leamington.ca/en/resourcesGeneral/Leamington-Logo.png"
+                alt="City of Leamington"
+                className="h-12 w-auto object-contain"
+              />
+              <span className="text-sm font-medium tracking-tight text-gray-300">
+                Leamington RideShare
+              </span>
             </a>
           </div>
 
