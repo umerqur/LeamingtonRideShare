@@ -146,10 +146,15 @@ export default function LeadForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-4 text-lg font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all focus:outline-none focus:ring-4 focus:ring-primary-500/50 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 text-lg font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-primary-500/50 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Submitting...' : 'Join the waitlist'}
               </button>
+
+              {/* Conversion copy */}
+              <p className="text-sm text-gray-500 text-center mt-3">
+                No spam. Local pilot program. You can opt out anytime.
+              </p>
             </form>
           )}
         </div>
