@@ -22,13 +22,13 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
           <div className="hidden md:flex md:items-center md:gap-4">
             <button
               onClick={() => {/* Sign in logic */}}
-              className="px-5 py-2 text-sm font-medium text-white hover:text-primary-400 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-charcoal-900 rounded-lg"
+              className="px-4 py-2 text-sm font-normal text-gray-400 hover:text-gray-300 transition-colors duration-300 focus:outline-none rounded-lg"
             >
               Sign in
             </button>
             <button
               onClick={onRequestRideClick}
-              className="px-6 py-2.5 text-sm font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-charcoal-900 shadow-md hover:shadow-lg"
+              className="px-6 py-2.5 text-sm font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-charcoal-900 shadow-md"
             >
               Request a ride
             </button>
@@ -77,7 +77,7 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
                 setMobileMenuOpen(false)
                 /* Sign in logic */
               }}
-              className="block w-full text-left px-3 py-2 text-base font-medium text-white hover:bg-charcoal-700 rounded-lg transition-colors"
+              className="block w-full text-left px-3 py-2 text-base font-normal text-gray-400 hover:text-gray-300 rounded-lg transition-colors duration-300"
             >
               Sign in
             </button>
@@ -86,7 +86,7 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
                 setMobileMenuOpen(false)
                 onRequestRideClick()
               }}
-              className="block w-full text-center mt-2 px-3 py-2.5 text-base font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all"
+              className="block w-full text-center mt-2 px-3 py-2.5 text-base font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-300"
             >
               Request a ride
             </button>
