@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import TrustRow from '../components/TrustRow'
@@ -5,8 +7,23 @@ import HowItWorks from '../components/HowItWorks'
 import FAQ from '../components/FAQ'
 import LeadForm from '../components/LeadForm'
 import Footer from '../components/Footer'
+import { getCurrentUser } from '../lib/auth'
 
 export default function LandingPage() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const checkAuthAndRedirect = async () => {
+      const user = await getCurrentUser()
+      if (user) {
+        console.log('User already signed in, redirecting to auth callback')
+        navigate('/auth')
+      }
+    }
+
+    checkAuthAndRedirect()
+  }, [navigate])
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
