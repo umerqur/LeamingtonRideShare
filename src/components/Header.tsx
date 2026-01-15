@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SignInModal from './SignInModal'
 
 interface HeaderProps {
   onRequestRideClick: () => void
@@ -6,6 +7,12 @@ interface HeaderProps {
 
 export default function Header({ onRequestRideClick }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [signInModalOpen, setSignInModalOpen] = useState(false)
+
+  const handleSignInClick = () => {
+    console.log('Sign in modal opening')
+    setSignInModalOpen(true)
+  }
 
   return (
     <header className="bg-[#F5F7FA] sticky top-0 z-50 shadow-sm border-t-[3px] border-t-[#F9A01E] border-b border-b-[#E5E7EB]">
@@ -25,7 +32,7 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-4">
             <button
-              onClick={() => {/* Sign in logic */}}
+              onClick={handleSignInClick}
               className="px-4 py-2 text-sm font-normal text-[#004987] hover:underline hover:decoration-[#F9A01E] hover:decoration-2 hover:underline-offset-4 transition-all duration-300 focus:outline-none rounded-lg"
             >
               Sign in
@@ -79,7 +86,7 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
             <button
               onClick={() => {
                 setMobileMenuOpen(false)
-                /* Sign in logic */
+                handleSignInClick()
               }}
               className="block w-full text-left px-3 py-2 text-base font-normal text-[#004987] hover:bg-gray-50 rounded-lg transition-colors duration-300"
             >
@@ -97,6 +104,12 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
           </div>
         </div>
       )}
+
+      {/* Sign In Modal */}
+      <SignInModal
+        isOpen={signInModalOpen}
+        onClose={() => setSignInModalOpen(false)}
+      />
     </header>
   )
 }
