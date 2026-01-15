@@ -10,30 +10,68 @@ export default function AuthCallback() {
   useEffect(() => {
     const handleAuthCallback = async () => {
       try {
-        // Check if we have a session
-        const user = await getCurrentUser()
+        // Step 1: Parse hash tokens
+        const hash = window.location.hash
 
-        if (!user) {
+        if (hash && hash.includes('access_token=')) {
+          console.log('auth callback hash found: yes')
+
+          // Parse hash parameters
+          const hashParams = new URLSearchParams(hash.substring(1))
+          const access_token = hashParams.get('access_token')
+          const refresh_token = hashParams.get('refresh_token')
+
+          if (access_token && refresh_token) {
+            // Set session with hash tokens
+            await supabase.auth.setSession({
+              access_token,
+              refresh_token
+            })
+
+            // Clear the URL hash
+            window.history.replaceState({}, document.title, window.location.pathname + window.location.search)
+          }
+        } else {
+          console.log('auth callback hash found: no')
+        }
+
+        // Step 2: Get session normally
+        const { data: { session } } = await supabase.auth.getSession()
+
+        if (!session) {
           console.log('No session found, redirecting to home')
           navigate('/')
           return
         }
 
-        console.log('User authenticated:', user.email)
+        console.log('session user id:', session.user.id)
 
-        // Get user profile to determine role
-        const profile = await getProfile(user.id)
+        // Step 3: Fetch profile role from public.profiles
+        const { data: profile, error } = await supabase
+          .from('profiles')
+          .select('id, role, email')
+          .eq('id', session.user.id)
+          .single()
 
-        if (!profile || !profile.role) {
+        if (error || !profile || !profile.role) {
           console.error('No profile or role found for user')
           setError('Unable to load user profile. Please contact support.')
+          navigate('/')
           return
         }
 
-        console.log('User role:', profile.role)
+        console.log('profile role:', profile.role)
 
-        // Route based on role
-        const targetRoute = routeByRole(profile.role)
+        // Step 4: Route by role
+        let targetRoute
+        if (profile.role === 'admin') {
+          targetRoute = '/admin'
+        } else if (profile.role === 'driver') {
+          targetRoute = '/driver'
+        } else {
+          targetRoute = '/rider'
+        }
+
         console.log('Routing to:', targetRoute)
         navigate(targetRoute, { replace: true })
       } catch (err) {
