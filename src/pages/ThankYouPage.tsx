@@ -31,7 +31,7 @@ export default function ThankYouPage() {
 
             {/* Message */}
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Thank you for joining the Leamington RideShare waitlist. We'll keep you updated on our launch progress and let you know as soon as we're ready to serve you.
+              Thank you for joining the Leamington Ride Share waitlist. We'll keep you updated on our launch progress and let you know as soon as we're ready to serve you.
             </p>
 
             {/* What's Next Section */}

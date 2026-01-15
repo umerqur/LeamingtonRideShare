@@ -35,7 +35,7 @@ export default function FAQ() {
             Frequently asked questions
           </h2>
           <p className="text-lg text-gray-600">
-            Everything you need to know about Leamington RideShare
+            Everything you need to know about Leamington Ride Share
           </p>
         </div>
 
