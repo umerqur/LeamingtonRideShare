@@ -8,20 +8,17 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-charcoal-900 text-white sticky top-0 z-50 shadow-lg">
+    <header className="bg-[#F5F7FA] sticky top-0 z-50 shadow-sm border-t-[3px] border-t-[#F9A01E] border-b border-b-[#E5E7EB]">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <a href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+          <div className="flex-shrink-0 pl-2">
+            <a href="/" className="flex items-center hover:opacity-90 transition-opacity">
               <img
                 src="https://www.leamington.ca/en/resourcesGeneral/Leamington-Logo.png"
                 alt="City of Leamington"
-                className="h-12 w-auto object-contain"
+                className="h-11 w-auto object-contain"
               />
-              <span className="text-sm font-medium tracking-tight text-gray-300">
-                Leamington RideShare
-              </span>
             </a>
           </div>
 
@@ -29,13 +26,13 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
           <div className="hidden md:flex md:items-center md:gap-4">
             <button
               onClick={() => {/* Sign in logic */}}
-              className="px-4 py-2 text-sm font-normal text-gray-400 hover:text-gray-300 transition-colors duration-300 focus:outline-none rounded-lg"
+              className="px-4 py-2 text-sm font-normal text-[#004987] hover:underline hover:decoration-[#F9A01E] hover:decoration-2 hover:underline-offset-4 transition-all duration-300 focus:outline-none rounded-lg"
             >
               Sign in
             </button>
             <button
               onClick={onRequestRideClick}
-              className="px-6 py-2.5 text-sm font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-charcoal-900 shadow-md"
+              className="px-6 py-2.5 text-sm font-semibold bg-[#004987] text-white rounded-lg hover:bg-[#004E7D] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#004987] focus:ring-offset-2 shadow-md"
             >
               Request a ride
             </button>
@@ -46,7 +43,7 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center rounded-lg p-2 text-white hover:bg-charcoal-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+              className="inline-flex items-center justify-center rounded-lg p-2 text-[#004987] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#004987]"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -77,14 +74,14 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-charcoal-800 border-t border-charcoal-700">
+        <div className="md:hidden bg-white border-t border-[#E5E7EB]">
           <div className="space-y-1 px-4 pb-3 pt-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false)
                 /* Sign in logic */
               }}
-              className="block w-full text-left px-3 py-2 text-base font-normal text-gray-400 hover:text-gray-300 rounded-lg transition-colors duration-300"
+              className="block w-full text-left px-3 py-2 text-base font-normal text-[#004987] hover:bg-gray-50 rounded-lg transition-colors duration-300"
             >
               Sign in
             </button>
@@ -93,7 +90,7 @@ export default function Header({ onRequestRideClick }: HeaderProps) {
                 setMobileMenuOpen(false)
                 onRequestRideClick()
               }}
-              className="block w-full text-center mt-2 px-3 py-2.5 text-base font-semibold bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-300"
+              className="block w-full text-center mt-2 px-3 py-2.5 text-base font-semibold bg-[#004987] text-white rounded-lg hover:bg-[#004E7D] transition-colors duration-300"
             >
               Request a ride
             </button>
