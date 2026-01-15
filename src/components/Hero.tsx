@@ -5,44 +5,38 @@ interface HeroProps {
 
 export default function Hero({ onRequestRideClick, onBecomeDriverClick }: HeroProps) {
   return (
-    <section className="relative bg-primary-800 text-white overflow-hidden">
-      {/* Background image with filters */}
+    <section className="relative bg-primary-800 text-white overflow-hidden min-h-screen flex items-center">
+      {/* Background image - clean and crisp */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover"
         style={{
-          backgroundImage: 'url(/hero_taxi.jpg)',
-          filter: 'blur(4px) saturate(0.8) brightness(0.75)',
-          transform: 'scale(1.1)', // Prevent blur edge artifacts
+          backgroundImage: 'url(/ride_share.png)',
+          backgroundPosition: 'center top',
         }}
       ></div>
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#004987]/70 to-[#002952]/75"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 to-black/65"></div>
 
-      {/* Subtle accent highlight */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-br from-[#F9A01E]/5 to-transparent transform translate-x-1/4 -translate-y-1/4 rotate-12"></div>
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
-        <div className="text-center">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36 w-full">
+        <div className="text-center lg:text-left lg:max-w-4xl">
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
             Safe local rides in Leamington
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 mb-3 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 mb-3 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
             Approved drivers. Transparent pricing. City friendly support.
           </p>
 
           {/* Municipality line */}
-          <p className="text-base sm:text-lg text-gray-300 mb-10 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-300 mb-10 max-w-3xl mx-auto lg:mx-0">
             A local transportation pilot for the Municipality of Leamington
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-6">
             <button
               onClick={onRequestRideClick}
               className="w-full sm:w-auto px-8 py-4 text-base sm:text-lg font-semibold text-white rounded-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-primary-500/50 shadow-xl"
@@ -61,7 +55,7 @@ export default function Hero({ onRequestRideClick, onBecomeDriverClick }: HeroPr
           </div>
 
           {/* Trust positioning */}
-          <p className="text-sm text-gray-300/90 max-w-2xl mx-auto">
+          <p className="text-sm text-gray-300/90 max-w-2xl mx-auto lg:mx-0">
             Designed for residents. Operated locally. Supported by the municipality.
           </p>
         </div>
