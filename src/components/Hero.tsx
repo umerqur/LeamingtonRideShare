@@ -10,7 +10,7 @@ export default function Hero({ onRequestRideClick, onBecomeDriverClick }: HeroPr
       <div
         className="absolute inset-0 bg-cover"
         style={{
-          backgroundImage: 'url(/ride_share.png)',
+          backgroundImage: 'url("/ride_share.png")',
           backgroundPosition: 'center top',
         }}
       ></div>
