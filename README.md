@@ -1,6 +1,6 @@
-# Leamington RideShare
+# Leamington Ride Share
 
-A modern, conversion-focused landing page for Leamington RideShare - safe local rides with approved drivers, transparent pricing, and city-friendly support.
+A modern, conversion-focused landing page for Leamington Ride Share - safe local rides with approved drivers, transparent pricing, and city-friendly support.
 
 ## Tech Stack
 
