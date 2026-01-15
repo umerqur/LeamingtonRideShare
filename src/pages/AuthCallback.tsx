@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { supabase } from '../lib/supabaseClient'
 import { getCurrentUser, getProfile, routeByRole } from '../lib/auth'
 
 export default function AuthCallback() {
   const navigate = useNavigate()
   const [error, setError] = useState<string | null>(null)
+  const startedRef = useRef(false)
 
   useEffect(() => {
+    // Prevent callback logic from running more than once
+    if (startedRef.current) return
+    startedRef.current = true
+
+    // Guard against setting state after unmount
+    let alive = true
+
     const handleAuthCallback = async () => {
       try {
         // Check if we have a session
@@ -15,6 +22,7 @@ export default function AuthCallback() {
 
         if (!user) {
           console.log('No session found, redirecting to home')
+          if (!alive) return
           navigate('/')
           return
         }
@@ -26,41 +34,29 @@ export default function AuthCallback() {
 
         if (!profile || !profile.role) {
           console.error('No profile or role found for user')
+          if (!alive) return
           setError('Unable to load user profile. Please contact support.')
           return
         }
 
         console.log('User role:', profile.role)
 
-        // Route based on role
+        // Route based on role - immediately navigate away from /auth
         const targetRoute = routeByRole(profile.role)
         console.log('Routing to:', targetRoute)
+        if (!alive) return
         navigate(targetRoute, { replace: true })
       } catch (err) {
         console.error('Error during auth callback:', err)
+        if (!alive) return
         setError('An error occurred during sign in. Please try again.')
       }
     }
 
     handleAuthCallback()
 
-    // Listen for auth state changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        console.log('Auth state changed:', event)
-
-        if (event === 'SIGNED_IN' && session?.user) {
-          const profile = await getProfile(session.user.id)
-          if (profile?.role) {
-            const targetRoute = routeByRole(profile.role)
-            navigate(targetRoute, { replace: true })
-          }
-        }
-      }
-    )
-
     return () => {
-      subscription.unsubscribe()
+      alive = false
     }
   }, [navigate])
 
