@@ -70,9 +70,9 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
         {/* Modal content */}
         <div className="mt-2">
-          <h2 className="text-2xl font-bold text-[#004987] mb-2">Sign in</h2>
+          <h2 className="text-2xl font-bold text-[#004987] mb-2">Sign in to Leamington Ride Share</h2>
           <p className="text-gray-600 mb-6 text-sm">
-            Enter your email to receive a magic link
+            Enter your email and we will send you a secure sign in link.
           </p>
 
           {!success ? (
@@ -104,7 +104,7 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
                 disabled={loading || !email}
                 className="w-full px-6 py-2.5 text-sm font-semibold bg-[#004987] text-white rounded-lg hover:bg-[#004E7D] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#004987] focus:ring-offset-2 shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
-                {loading ? 'Sending...' : 'Send magic link'}
+                {loading ? 'Sending...' : 'Send sign in link'}
               </button>
             </form>
           ) : (
@@ -115,9 +115,9 @@ export default function SignInModal({ isOpen, onClose }: SignInModalProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <p className="font-semibold mb-1">Check your email for a sign in link</p>
+                    <p className="font-semibold mb-1">Check your email for your secure sign in link.</p>
                     <p className="text-sm text-green-700">
-                      We've sent a magic link to your email. Click the link to sign in.
+                      Click the link in your email to complete sign in.
                     </p>
                   </div>
                 </div>
